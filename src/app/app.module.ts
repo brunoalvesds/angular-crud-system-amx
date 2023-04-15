@@ -6,11 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListPeopleComponent } from './pages/list-people/list-people.component';
 import { CreateUpdatePersonComponent } from './pages/create-update-person/create-update-person.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // Angular Material imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -22,10 +25,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { RegisterComponent } from './pages/register/register.component';
     MatSortModule,
     MatCardModule,
     MatSnackBarModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   declarations: [
     AppComponent,

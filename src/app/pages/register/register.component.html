@@ -1,19 +1,27 @@
 <h2>Register</h2>
-<form (ngSubmit)="register()">
-    <mat-form-field>
-        <mat-label>Username:</mat-label>
-        <input matInput [(ngModel)]="username" name="username" [required]="true">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Password:</mat-label>
-        <input matInput type="password" [(ngModel)]="password" name="password" [required]="true">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Confirm Password:</mat-label>
-        <input matInput type="password" [(ngModel)]="confirmPassword" name="confirmPassword" [required]="true">
-    </mat-form-field>
-    <div *ngIf="password !== confirmPassword">
-        <p>Passwords do not match</p>
+<mat-card>
+    <form (ngSubmit)="register()">
+        <mat-form-field>
+            <mat-label>Username:</mat-label>
+            <input matInput [(ngModel)]="username" name="username" [required]="true">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password:</mat-label>
+            <input matInput type="password" [(ngModel)]="password" name="password" [required]="true">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Confirm Password:</mat-label>
+            <input matInput type="password" [(ngModel)]="confirmPassword" name="confirmPassword" [required]="true">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Register</button>
+    </form>
+</mat-card>
+
+<ng-template #alertModal let-modal>
+    <div mat-dialog-content class="modal-content">
+        <p>{{ errorMessage }}</p>
     </div>
-    <button mat-raised-button color="primary" type="submit">Register</button>
-</form>
+    <div mat-dialog-actions>
+        <button mat-button (click)="modal.close()">OK</button>
+    </div>
+</ng-template>
