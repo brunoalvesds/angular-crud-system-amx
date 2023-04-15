@@ -1,0 +1,34 @@
+<div class="container">
+    <h2>{{ title }}</h2>
+
+    <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="state">State</label>
+            <select class="form-control" id="state" formControlName="state" required>
+                <option *ngFor="let state of states" [value]="state.abbreviation">{{ state.name }}</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ buttonLabel }}</button>
+    </form>
+</div>
