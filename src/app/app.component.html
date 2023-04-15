@@ -1,32 +1,34 @@
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-        <mat-toolbar>Menu</mat-toolbar>
+<mat-toolbar color="white">
+    <app-button-menu-mobile (menuClicked)="drawer.toggle()"></app-button-menu-mobile>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #drawer [mode]="isHandset$ ? 'over' : 'side'" [fixedInViewport]="isHandset$ ? false : true"
+        [opened]="isHandset$ ? false : true">
         <mat-nav-list>
-            <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="sidenav.close()">
+            <a mat-list-item routerLink="">
                 <mat-icon>home</mat-icon>
                 <span>Home</span>
             </a>
-            <a mat-list-item routerLink="/" routerLinkActive="active" (click)="sidenav.close()">
-                <mat-icon>work</mat-icon>
-                <span>Jobs</span>
-            </a>
-            <a mat-list-item routerLink="/people" routerLinkActive="active" (click)="sidenav.close()">
+            <a mat-list-item routerLink="people">
                 <mat-icon>people</mat-icon>
                 <span>People</span>
             </a>
-            <a mat-list-item (click)="logout()" (menuClicked)="sidenav.close()">
-                <mat-icon>logout</mat-icon>
+            <a mat-list-item routerLink="jobs">
+                <mat-icon>work</mat-icon>
+                <span>Jobs</span>
+            </a>
+            <a mat-list-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
                 <span>Log Out</span>
             </a>
         </mat-nav-list>
     </mat-sidenav>
+
     <mat-sidenav-content>
-        <div class="toolbar">
-            <button mat-icon-button (click)="sidenav.toggle()" *ngIf="isHandset$ | async">
-                <mat-icon>menu</mat-icon>
-            </button>
+        <div style="padding: 20px;">
+            <router-outlet></router-outlet>
         </div>
-        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
