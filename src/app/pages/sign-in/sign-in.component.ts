@@ -15,7 +15,12 @@ export class SignInComponent {
 
   signIn(): void {
     const isAuthenticated = this.authService.signIn(this.username, this.password);
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
+      // user is authenticated
+      this.errorMessage = '';
+      // navigate to home page or redirect to original URL
+    } else {
+      // user is not authenticated
       this.errorMessage = 'Invalid username or password';
     }
   }

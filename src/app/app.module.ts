@@ -25,6 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     SignInComponent,
     ListPeopleComponent,
-    CreateUpdatePersonComponent
+    CreateUpdatePersonComponent,
+    RegisterComponent
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
