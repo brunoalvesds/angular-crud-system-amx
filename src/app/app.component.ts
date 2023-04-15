@@ -21,6 +21,6 @@ export class AppComponent {
   }
 
   logout() {
-    // this.authService.logout();
+    this.authService.logOut();
   }
 }
