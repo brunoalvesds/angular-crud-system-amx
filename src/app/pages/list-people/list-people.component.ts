@@ -23,18 +23,21 @@ export class ListPeopleComponent implements OnInit {
     this.loadPeople();
   }
 
-  private loadPeople(): void {
+  loadPeople() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.personService.getPeople(id).subscribe((people: Person[]) => {
+    // if (id === null) {}
+    this.personService.getPeopleList().subscribe((people: Person[]) => {
       this.people = people;
+      console.log("PPl: ", this.people);
     });
+    
   }
 
-  public editPerson(id: number): void {
+  public editPerson(id: string): void {
     this.router.navigate(['/people', id, 'edit']);
   }
 
-  public deletePerson(id: number): void {
+  public deletePerson(id: string): void {
     if (confirm('Are you sure you want to delete this person?')) {
       this.personService.deletePerson(id).subscribe(() => {
         this.loadPeople();

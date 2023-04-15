@@ -1,21 +1,15 @@
-<h2>List People</h2>
-<table>
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let person of people">
-            <td>{{ person.firstName }}</td>
-            <td>{{ person.lastName }}</td>
-            <td>
-                <a (click)="editPerson(person.id)"><i class="fa fa-edit"></i></a>
-                <a (click)="deletePerson(person.id)"><i class="fa fa-trash"></i></a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<button routerLink="/people/new">New Person</button>
+<h2>People</h2>
+<ul>
+    <li *ngFor="let person of people">
+        <div>
+            <h3 matLine>{{ person.firstName }} {{ person.lastName }} {{person._id}}</h3>
+        </div>
+        
+        <div class="actions">
+            <button mat-raised-button (click)="editPerson(person._id)">Edit</button>
+            <button mat-raised-button>Remove</button>
+        </div>
+    </li>
+</ul>
+
+<button mat-raised-button color="primary"  routerLink="/people/new">New Person</button>

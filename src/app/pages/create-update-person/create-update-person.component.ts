@@ -15,7 +15,7 @@ export class CreateUpdatePersonComponent implements OnInit {
   title: string = '';
   buttonLabel: string = '';
   personForm!: FormGroup;
-  id: number = 0;
+  id: string = '';
   states = US_STATES;
 
   constructor(
@@ -25,20 +25,20 @@ export class CreateUpdatePersonComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.id = this.activatedRoute.snapshot.paramMap.get('id')!;
     this.title = this.id ? 'Edit Person' : 'Add Person';
     this.buttonLabel = this.id ? 'Update' : 'Create';
 
     this.personForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      phone: ['', Validators.required, Validators.minLength(8), Validators.minLength(15)],
       state: ['', Validators.required],
     });
 
     if (this.id) {
-      this.personService.getPeople(this.id).subscribe(
+      this.personService.getPerson(this.id).subscribe(
         (person: Person[]) => {
           this.personForm.patchValue(person);
         }
@@ -50,7 +50,7 @@ export class CreateUpdatePersonComponent implements OnInit {
     if (this.personForm.valid) {
       const person: Person = this.personForm.value;
       if (this.id) {
-        person.id = this.id;
+        person._id = this.id;
         this.personService.updatePerson(person).subscribe(() => {
           this.router.navigate(['/people']);
         });

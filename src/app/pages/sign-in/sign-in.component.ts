@@ -1,28 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
+  username = '';
+  password = '';
+  errorMessage = '';
 
-  username: string = '';
-  password: string = '';
+  constructor(private authService: AuthService) { }
 
-  constructor(private router: Router) { }
-
-  signIn() {
-    // emulate sign in with fixed token
-    const token = 'fixed-token';
-    localStorage.setItem('token', token);
-
-    // navigate to home screen
-    this.router.navigate(['/home']);
+  signIn(): void {
+    const isAuthenticated = this.authService.signIn(this.username, this.password);
+    if (!isAuthenticated) {
+      this.errorMessage = 'Invalid username or password';
+    }
   }
-
-  ngOnInit(): void {
-  }
-
 }
