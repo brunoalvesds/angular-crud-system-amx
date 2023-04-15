@@ -32,8 +32,8 @@ export class CreateUpdatePersonComponent implements OnInit {
     this.personForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
-      phone: ['', Validators.required, Validators.minLength(8), Validators.minLength(15)],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       state: ['', Validators.required],
     });
 
