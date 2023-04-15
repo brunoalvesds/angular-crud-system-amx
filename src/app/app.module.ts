@@ -27,6 +27,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { ButtonMenuMobileComponent } from './shared/button-menu-mobile/button-menu-mobile.component';
 
 @NgModule({
   imports: [
@@ -48,7 +50,8 @@ import { MatListModule } from '@angular/material';
     MatCardModule,
     MatSnackBarModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ],
   declarations: [
     AppComponent,
@@ -56,7 +59,8 @@ import { MatListModule } from '@angular/material';
     SignInComponent,
     ListPeopleComponent,
     CreateUpdatePersonComponent,
-    RegisterComponent
+    RegisterComponent,
+    ButtonMenuMobileComponent
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
