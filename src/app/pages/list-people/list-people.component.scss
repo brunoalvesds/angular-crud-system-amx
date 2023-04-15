@@ -1,0 +1,43 @@
+.page-content {
+    background-image: url('../../../assets/images/Brooklyn.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: grey;
+    padding: 15px;
+    height: calc(100vh - 64px);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+
+    h2 {
+        color: darkgreen;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+.bottom-action {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+mat-icon {
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.5;
+    }
+}

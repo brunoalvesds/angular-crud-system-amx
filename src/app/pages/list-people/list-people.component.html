@@ -1,15 +1,21 @@
-<h2>People</h2>
-<ul>
-    <li *ngFor="let person of people">
-        <div>
-            <h3 matLine>{{ person.firstName }} {{ person.lastName }} {{person._id}}</h3>
-        </div>
+<div class="page-content">
+    <div class="container">
+        <h2>People</h2>
+        <ul>
+            <li *ngFor="let person of people">
+                <div>
+                    <h3 matLine>{{ person.firstName }} {{ person.lastName }}</h3>
+                </div>
         
-        <div class="actions">
-            <button mat-raised-button (click)="editPerson(person._id)">Edit</button>
-            <button mat-raised-button>Remove</button>
+                <div class="actions">
+                    <mat-icon (click)="editPerson(person._id)">edit</mat-icon>
+                    <mat-icon (click)="deletePerson(person._id)">delete</mat-icon>
+                </div>
+            </li>
+        </ul>
+        
+        <div class="bottom-action">
+            <button mat-raised-button color="primary" routerLink="/people/new">New Person</button>
         </div>
-    </li>
-</ul>
-
-<button mat-raised-button color="primary"  routerLink="/people/new">New Person</button>
+    </div>
+</div>
