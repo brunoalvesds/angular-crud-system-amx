@@ -33,3 +33,16 @@ body {
     padding: 0;
 }
 
+.mat-card {
+    background-color: rgba(255, 255, 255, 0.8);
+
+    .mat-form-field-flex {
+        background-color: transparent;
+    }
+}
+
+.mat-raised-button.mat-primary {
+    color: white;
+    font-size: 18px;
+}
+
