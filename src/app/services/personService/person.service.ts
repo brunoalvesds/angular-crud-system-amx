@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Person } from '../../models/Person';
 import { map } from 'rxjs/operators';
@@ -8,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PersonService {
-  private baseUrl = 'https://crudcrud.com/api/bac0774eb2234d6d867c0323b9325391';
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -20,9 +21,8 @@ export class PersonService {
 
 
   getPerson(id: any): Observable<Person[]> {
-    const url = `${this.baseUrl}/people`;
-    const params = new HttpParams().set('id', id.toString());
-    return this.http.get<Person[]>(url, { params });
+    const url = `${this.baseUrl}/people/` + id.toString();
+    return this.http.get<Person[]>(url, {});
   }
 
   createPerson(person: Person): Observable<Person> {
@@ -30,7 +30,14 @@ export class PersonService {
   }
 
   updatePerson(person: Person): Observable<Person> {
-    return this.http.put<Person>(`${this.baseUrl}/people/${person._id}`, person);
+    const body = {
+      "email": person.email,
+      "firstName": person.firstName,
+      "lastName": person.lastName,
+      "phone": person.phone,
+      "state": person.state
+    }
+    return this.http.put<Person>(`${this.baseUrl}/people/${person._id}`, body, {});
   }
 
   deletePerson(id: string): Observable<void> {

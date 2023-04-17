@@ -51,8 +51,8 @@ import { ButtonMenuMobileComponent } from './shared/button-menu-mobile/button-me
     MatCardModule,
     MatSnackBarModule,
     MatListModule,
-    MatDialogModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule
   ],
   declarations: [
     AppComponent,
@@ -64,6 +64,7 @@ import { ButtonMenuMobileComponent } from './shared/button-menu-mobile/button-me
     ButtonMenuMobileComponent
   ],
   providers: [],
+  exports: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
