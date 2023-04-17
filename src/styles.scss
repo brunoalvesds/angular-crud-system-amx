@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "~@angular/material/theming";
 
@@ -50,10 +50,11 @@ mat-card-header .mat-card-header-text {
 .mat-raised-button {
     &.mat-primary, &.mat-accent {
         font-size: 18px;
+        color: white;
     }
 
-     &.mat-primary {
-        color: white;
+     &.mat-accent {
+        background-color: #7483ff;
      }
 }
 

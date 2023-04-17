@@ -24,6 +24,7 @@ export class SignInComponent {
       // user is not authenticated
       this.errorMessage = 'Invalid username or password';
       console.log(this.errorMessage);
+      alert(this.errorMessage);
     }
   }
 }

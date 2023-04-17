@@ -34,6 +34,7 @@ export class CreateUpdatePersonComponent implements OnInit {
     this.title = this.id ? 'Edit Person' : 'Add Person';
     this.buttonLabel = this.id ? 'Update' : 'Create';
 
+    // Initializing form group and setting validation rules
     this.personForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -42,10 +43,11 @@ export class CreateUpdatePersonComponent implements OnInit {
       state: ['', Validators.required],
     });
 
+    // Pre-populating form fields with person's current data if id is provided
     if (this.id) {
       this.personService.getPerson(this.id).subscribe(
         (person: Person[]) => {
-          this.personForm.patchValue(person); // Pre-populate form fields with person's current data
+          this.personForm.patchValue(person);
         },
         error => {
           this.displayError('error');
@@ -59,9 +61,12 @@ export class CreateUpdatePersonComponent implements OnInit {
     });
   }
 
+  // Handling form submission
   onSubmit(): void {
     if (this.personForm.valid && this.hasChanged) {
       const person: Person = this.personForm.value;
+
+      // Updating person's data if id is provided
       if (this.id) {
         person._id = this.id;
         this.personService.updatePerson(person).subscribe(
@@ -72,6 +77,8 @@ export class CreateUpdatePersonComponent implements OnInit {
             this.displayError(error.message);
           }
         );
+      
+        // Creating new person if no id is provided
       } else {
         this.personService.createPerson(person).subscribe(
           () => {
@@ -89,6 +96,7 @@ export class CreateUpdatePersonComponent implements OnInit {
     }
   }
 
+  // Displaying error message
   displayError(errorMessage: string): void {
     alert(errorMessage);
   }

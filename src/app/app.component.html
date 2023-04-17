@@ -1,11 +1,10 @@
 <div class="page-content">
     <mat-toolbar color="white">
-        <app-button-menu-mobile (menuClicked)="drawer.toggle()"></app-button-menu-mobile>
+        <app-button-menu-mobile (menuClicked)="drawer.open()"></app-button-menu-mobile>
     </mat-toolbar>
-    
+
     <mat-sidenav-container>
-        <mat-sidenav #drawer [mode]="isHandset$ ? 'over' : 'side'" [fixedInViewport]="isHandset$ ? false : true"
-            [opened]="isHandset$ ? false : true" [disableClose]="false">
+        <mat-sidenav #drawer [mode]="'over'" [fixedInViewport]="true">
             <mat-nav-list class="menu-list">
                 <a mat-list-item routerLink="home">
                     <mat-icon>home</mat-icon>
@@ -25,12 +24,11 @@
                 </a>
             </mat-nav-list>
         </mat-sidenav>
-    
+
         <mat-sidenav-content>
             <div>
                 <router-outlet></router-outlet>
             </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
-
 </div>

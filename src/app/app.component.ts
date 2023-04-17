@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
-import { Observable } from 'rxjs';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { map, shareReplay } from 'rxjs/operators';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +8,9 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isHandset$: Observable<boolean>;
+  @ViewChild('drawer') drawer!: MatSidenav;
 
-  constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {
-    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset)
-      .pipe(
-        map(result => result.matches),
-        shareReplay()
-      );
+  constructor(private authService: AuthService) {
   }
 
   logout() {

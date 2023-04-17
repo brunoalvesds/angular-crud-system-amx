@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Person } from '../../models/Person';
 import { PersonService } from '../../services/personService/person.service';
@@ -15,31 +15,31 @@ export class ListPeopleComponent implements OnInit {
 
   constructor(
     private readonly personService: PersonService,
-    private readonly router: Router,
-    private activatedRoute: ActivatedRoute
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
+    // Load list of people when component initializes
     this.loadPeople();
   }
 
+  // Retrieve the list of people from the server
   loadPeople() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    // if (id === null) {}
     this.personService.getPeopleList().subscribe((people: Person[]) => {
       this.people = people;
-      console.log("PPl: ", this.people);
     });
-    
   }
 
+  // Navigate to the edit person page
   public editPerson(id: string): void {
     this.router.navigate(['/people', id, 'edit']);
   }
 
+  // Delete a person from the list
   public deletePerson(id: string): void {
     if (confirm('Are you sure you want to delete this person?')) {
       this.personService.deletePerson(id).subscribe(() => {
+        // Reload the list of people after the deletion
         this.loadPeople();
       });
     }

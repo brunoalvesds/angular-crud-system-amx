@@ -12,6 +12,7 @@
                     <mat-icon (click)="deletePerson(person._id)">delete</mat-icon>
                 </div>
             </li>
+            <li *ngIf="people.length <= 0">0 people registered.</li>
         </ul>
         
         <div class="bottom-action">
