@@ -12,7 +12,10 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.username = JSON.parse(this.currentUser).username;
+    if (this.currentUser) {
+      this.username = JSON.parse(this.currentUser).username;
+    }
+    console.log("username: ", this.username)
   }
 
 }

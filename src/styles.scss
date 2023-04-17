@@ -34,15 +34,40 @@ body {
 }
 
 .mat-card {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
 
     .mat-form-field-flex {
         background-color: transparent;
     }
 }
 
+mat-card-header .mat-card-header-text {
+    color: grey;
+    text-align: center;
+    width: 100%;
+}
+
 .mat-raised-button.mat-primary {
     color: white;
     font-size: 18px;
+}
+
+.mat-icon {
+    color: gray;
+}
+
+.mat-list-item:hover {
+    .mat-icon {
+        color: green;
+    }
+}
+
+.container {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.page-content {
+    min-height: calc(100vh - 64px);
 }
 
