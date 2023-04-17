@@ -96,6 +96,20 @@ export class CreateUpdatePersonComponent implements OnInit {
     }
   }
 
+  // Method to apply the mask as the user types
+  formatPhoneNumber(event: any) {
+    // Remove all non-numeric characters from the input value
+    let phoneNumber = event.target.value.replace(/\D/g, '');
+
+    // Apply the phone number mask
+    if (phoneNumber.length > 0) {
+      phoneNumber = '(' + phoneNumber.substring(0, 3) + ') ' + phoneNumber.substring(3, 6) + '-' + phoneNumber.substring(6, 10);
+    }
+
+    // Set the formatted phone number back to the input value
+    event.target.value = phoneNumber;
+  }
+
   // Displaying error message
   displayError(errorMessage: string): void {
     alert(errorMessage);

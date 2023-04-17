@@ -23,7 +23,7 @@
 
                 <mat-form-field appearance="fill" class="form-group">
                     <mat-label>Phone</mat-label>
-                    <input matInput formControlName="phone" [required]="true" maxlength="15">
+                    <input matInput formControlName="phone" [required]="true" maxlength="15" placeholder="(###) ###-####" (input)="formatPhoneNumber($event)">
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="form-group">
