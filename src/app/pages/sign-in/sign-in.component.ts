@@ -15,6 +15,7 @@ export class SignInComponent {
 
   signIn(): void {
     const isAuthenticated = this.authService.signIn(this.username, this.password);
+    
     if (isAuthenticated) {
       // user is authenticated
       this.errorMessage = '';

@@ -8,7 +8,7 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'people', component: ListPeopleComponent, canActivate: [AuthGuard] },
   { path: 'people/new', component: CreateUpdatePersonComponent, canActivate: [AuthGuard] },

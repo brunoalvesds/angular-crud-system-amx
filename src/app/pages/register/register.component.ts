@@ -1,9 +1,9 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -15,15 +15,18 @@ export class RegisterComponent {
   password: string = '';
   confirmPassword: string = '';
   errorMessage: string = '';
-  @ViewChild('alertModal', { static: true }) alertModal!: TemplateRef<any>;
 
-  constructor(private authService: AuthService, private router: Router, private dialog: MatDialog) { }
+  constructor(private authService: AuthService, private router: Router, public location: Location) { }
 
+  // Method to handle registration
   register() {
     if (this.password !== this.confirmPassword) {
       this.errorMessage = 'Password and Confirm Password do not match';
+      alert(this.errorMessage);
       return;
     }
+
+    // Call register method of AuthService and handle response
     this.authService.register(this.username, this.password)
       .pipe(
         catchError((error) => {
@@ -34,11 +37,14 @@ export class RegisterComponent {
       .subscribe(
         (result: any) => {
           if (result) {
-            console.log('Registration successful');
-            this.router.navigate(['/sign-in']);
+            this.router.navigate(['/sign-in']).then(() => {
+              // reload the current location to refresh the page
+              this.location.replaceState('/sign-in');
+              window.location.reload();
+            });
           } else {
             this.errorMessage = 'Registration failed';
-            this.dialog.open(this.alertModal);
+            alert(this.errorMessage);
           }
         }
       );
