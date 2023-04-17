@@ -49,4 +49,15 @@ export class AuthService {
     this.currentUserSubject.next(null);
     this.router.navigate(['/sign-in']);
   }
+
+  isLoggedIn(): boolean {
+    const currentUserString = localStorage.getItem('currentUser');
+    if (currentUserString !== null) {
+      const currentUser = JSON.parse(currentUserString);
+      if (currentUser !== null) {
+        return true; // user is logged in
+      }
+    }
+    return false; // user is not logged in
+  }
 }
